@@ -97,7 +97,7 @@ class BasePokeApiClient implements PokeApiClient {
 
   @override
   Future<T> get<T>(String url) async {
-    final response = await _client.get(url);
+    final response = await _client.get(Uri.parse(url));
     return _converterFactory.get<T>().fromJson(jsonDecode(response.body)) as T;
   }
 }
